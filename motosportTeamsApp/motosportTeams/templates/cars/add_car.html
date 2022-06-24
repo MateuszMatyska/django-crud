@@ -1,0 +1,17 @@
+{% if car %}
+    <form action="addcar" method="update">
+        {% csrf_token %}
+        <input type="text" value={{car.mark}} id="mark" name="mark" placeholder="Mark">
+        <input type="text" value={{car.mark}} id="model" name="model" placeholder="Model">
+        <input type="text" value={{car.mark}} id="car_type" name="car_type" placeholder="Car Type">
+        <input type="submit" value="Edit Car">
+    </form>
+{% else %}
+    <form action="addcar" method="post">
+        {% csrf_token %}
+        <input type="text" value="" id="mark" name="mark" placeholder="Mark">
+        <input type="text" value="" id="model" name="model" placeholder="Model">
+        <input type="text" value="" id="car_type" name="car_type" placeholder="Car Type">
+        <input type="submit" value="Add Car">
+    </form>
+{% endif %}

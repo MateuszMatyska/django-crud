@@ -1,0 +1,9 @@
+{% if cars_list %}
+    <ul>
+    {% for car in cars_list %}
+        <li>{{ car.mark }} {{car.model}} {{car.car_type}}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No car are available.</p>
+{% endif %}
