@@ -1,0 +1,11 @@
+{% if car %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="text" value={{car.mark}} id="mark" name="mark" placeholder="Mark">
+        <input type="text" value={{car.model}} id="model" name="model" placeholder="Model">
+        <input type="text" value={{car.car_type}} id="car_type" name="car_type" placeholder="Car Type">
+        <input type="submit" value="Edit Car">
+    </form>
+{% else %}
+    <p>No car are available.</p>
+{% endif %}

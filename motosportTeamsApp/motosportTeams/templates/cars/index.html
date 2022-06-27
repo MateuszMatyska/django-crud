@@ -1,7 +1,7 @@
 {% if cars_list %}
     <ul>
     {% for car in cars_list %}
-        <li>{{ car.mark }} {{car.model}} {{car.car_type}}</li>
+        <li>{{ car.mark }} {{car.model}} {{car.car_type}} <a href="/cars/editcar/{{ car.id }}">edit car</a> <a href="/cars/deletecar/{{ car.id }}">delete car</a></li>
     {% endfor %}
     </ul>
 {% else %}
