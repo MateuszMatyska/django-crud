@@ -1,0 +1,9 @@
+{% if drivers_list %}
+    <ul>
+    {% for driver in drivers_list %}
+        <li>{{driver.first_name}} {{driver.last_name}} {{ driver.car.mark }} {{driver.car.model}} {{driver.car.car_type}} <a href="/drivers/editdriver/{{ driver.id }}">edit driver</a> <a href="/drivers/deletedriver/{{ driver.id }}">delete driver</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No drivers are available.</p>
+{% endif %}

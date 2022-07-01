@@ -1,4 +1,5 @@
 from multiprocessing import context
+from statistics import mode
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 
@@ -50,4 +51,49 @@ def delete_car(request, car_id):
         return HttpResponseRedirect('/cars')
 
 def drivers(request):
-    return HttpResponse("Drivers view")
+    drivers = models.Driver.objects.all()
+    context = {'drivers_list': drivers}
+    return render(request, 'drivers/index.html', context)
+
+def add_driver(request):
+    if request.method == 'POST':
+        form = forms.DriverForm(request.POST)
+        if form.is_valid:
+            driver = models.Driver()
+            driver.first_name = request.POST['first_name']
+            driver.last_name = request.POST['last_name']
+            car_id = request.POST['car_id']
+            car = models.Car.objects.get(id = car_id)
+            driver.car = car
+            driver.save()
+            return HttpResponseRedirect('/drivers')   
+    else:
+        cars = models.Car.objects.all()
+        context = {'cars': cars}
+        return render(request, 'drivers/add_driver.html', context)  
+
+def edit_driver(request, driver_id):
+    if request.method == 'POST':
+        form = forms.DriverForm(request.POST)
+        if form.is_valid:
+            driver = models.Driver.objects.get(id = driver_id)
+            driver.first_name = request.POST['first_name']
+            driver.last_name = request.POST['last_name']
+            car_id = request.POST['car_id']
+            car = models.Car.objects.get(id = car_id)
+            driver.car = car
+            driver.save()
+            return HttpResponseRedirect('/drivers')   
+    else:
+        cars = models.Car.objects.all()
+        driver = models.Driver.objects.get(id = driver_id)
+        context = {'cars': cars, 'driver': driver}
+        return render(request, 'drivers/edit_driver.html', context) 
+
+def delete_driver(request, driver_id):
+    if driver_id > 0:
+        driver = models.Driver.objects.get(id = driver_id)
+        driver.delete()
+        return HttpResponseRedirect('/drivers')
+    else: 
+        return HttpResponseRedirect('/drivers')

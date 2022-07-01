@@ -1,0 +1,18 @@
+{% if driver %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="text" value={{driver.first_name}} id="first_name" name="first_name" placeholder="First name">
+        <input type="text" value={{driver.last_name}} id="last_name" name="last_name" placeholder="Last name">
+        {% if cars %}
+            <label for="cars">Choose a car:</label>
+                <select name="car_id" id="car_id">
+                    {% for car in cars %}
+                        <option value={{car.id}}>{{ car.mark }} {{car.model}} {{car.car_type}}</option>
+                    {% endfor %}
+                </select>
+        {% endif %}
+        <input type="submit" value="Add Driver">
+    </form>
+{% else %}
+    <p>No driver are available.</p>
+{% endif %}
