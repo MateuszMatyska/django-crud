@@ -1,3 +1,6 @@
+{% extends "../index.html" %}
+
+{% block content %}
 {% if car %}
     <form action="" method="post">
         {% csrf_token %}
@@ -9,3 +12,4 @@
 {% else %}
     <p>No car are available.</p>
 {% endif %}
+{% endblock %}

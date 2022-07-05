@@ -1,13 +1,12 @@
-from multiprocessing import context
 from statistics import mode
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 
 from . import models
 from . import forms
 
 def index(request):
-    return HttpResponse("MotoSportTeams app")
+    return render(request,'index.html')
 
 def cars(request):
     cars = models.Car.objects.all()

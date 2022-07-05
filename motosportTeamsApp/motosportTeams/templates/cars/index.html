@@ -1,9 +1,49 @@
+{% extends "../index.html" %}
+
+{% block content %}
 {% if cars_list %}
-    <ul>
-    {% for car in cars_list %}
-        <li>{{ car.mark }} {{car.model}} {{car.car_type}} <a href="/cars/editcar/{{ car.id }}">edit car</a> <a href="/cars/deletecar/{{ car.id }}">delete car</a></li>
-    {% endfor %}
-    </ul>
+    <table class="table">
+        <thead class="table-primary">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Mark</th>
+              <th scope="col">Model</th>
+              <th scope="col">Type</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody class="table-group-divider table-secondary">
+            {% for car in cars_list %}
+                <tr>
+                    <td>{{ car.id }}</td>
+                    <td>{{ car.mark }}</td>
+                    <td>{{ car.model }}</td>
+                    <td>{{ car.car_type }}</td>
+                    <td>
+                        <a href="/cars/editcar/{{ car.id }}" class="btn btn-warning" role="button" >Edit car</a> 
+                        <a href="/cars/deletecar/{{ car.id }}" class="btn btn-danger" role="button" >Delete car</a>
+                    </td>
+                </tr>
+            {% endfor %}
+          </tbody>
+    </table>
 {% else %}
-    <p>No car are available.</p>
+    <div class="card border-primary mb-3">
+        <div class="card-header text-bg-primary">
+            UPS...
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">No cars are available.</h5>
+            <p class="card-text">There are no cars. You can add new car to app. Press Button below</p>
+        </div>
+    </div>
 {% endif %}
+<div class="container">
+    <div class="row">
+        <div class="col-10"></div>
+        <div class="col-2 ms-auto">
+            <a style="width: 100%;" class="btn btn-primary btn-lg" href="/cars/addcar" role="button">Add car</a>
+        </div>
+    </div>
+</div>  
+{% endblock %}

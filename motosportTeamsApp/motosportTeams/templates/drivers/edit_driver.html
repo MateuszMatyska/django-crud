@@ -1,3 +1,6 @@
+{% extends "../index.html" %}
+
+{% block content %}
 {% if driver %}
     <form action="" method="post">
         {% csrf_token %}
@@ -16,3 +19,4 @@
 {% else %}
     <p>No driver are available.</p>
 {% endif %}
+{% endblock %}

@@ -1,3 +1,6 @@
+{% extends "../index.html" %}
+
+{% block content %}
 <form action="adddriver" method="post">
     {% csrf_token %}
     <input type="text" value="" id="first_name" name="first_name" placeholder="First name">
@@ -12,3 +15,4 @@
     {% endif %}
     <input type="submit" value="Add Driver">
 </form>
+{% endblock %}

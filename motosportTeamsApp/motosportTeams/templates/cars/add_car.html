@@ -1,3 +1,6 @@
+{% extends "../index.html" %}
+
+{% block content %}
 <form action="addcar" method="post">
     {% csrf_token %}
     <input type="text" value="" id="mark" name="mark" placeholder="Mark">
@@ -5,3 +8,4 @@
     <input type="text" value="" id="car_type" name="car_type" placeholder="Car Type">
     <input type="submit" value="Add Car">
 </form>
+{% endblock %}

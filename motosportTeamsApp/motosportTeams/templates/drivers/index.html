@@ -1,3 +1,6 @@
+{% extends "../index.html" %}
+
+{% block content %}
 {% if drivers_list %}
     <ul>
     {% for driver in drivers_list %}
@@ -7,3 +10,4 @@
 {% else %}
     <p>No drivers are available.</p>
 {% endif %}
+{% endblock %}
