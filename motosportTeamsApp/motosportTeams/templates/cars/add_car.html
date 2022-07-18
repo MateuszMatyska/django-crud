@@ -3,9 +3,18 @@
 {% block content %}
 <form action="addcar" method="post">
     {% csrf_token %}
-    <input type="text" value="" id="mark" name="mark" placeholder="Mark">
-    <input type="text" value="" id="model" name="model" placeholder="Model">
-    <input type="text" value="" id="car_type" name="car_type" placeholder="Car Type">
-    <input type="submit" value="Add Car">
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Mark</label>
+        <input class="form-control" type="text" value="" id="mark" name="mark" placeholder="Mark">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Model</label>
+        <input class="form-control" type="text" value="" id="model" name="model" placeholder="Model">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Car Type</label>
+        <input class="form-control" type="text" value="" id="car_type" name="car_type" placeholder="Car Type">
+    </div>
+    <input class="btn btn-primary" type="submit" value="Add Car">
 </form>
 {% endblock %}

@@ -4,12 +4,29 @@
 {% if car %}
     <form action="" method="post">
         {% csrf_token %}
-        <input type="text" value={{car.mark}} id="mark" name="mark" placeholder="Mark">
-        <input type="text" value={{car.model}} id="model" name="model" placeholder="Model">
-        <input type="text" value={{car.car_type}} id="car_type" name="car_type" placeholder="Car Type">
-        <input type="submit" value="Edit Car">
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Mark</label>
+            <input value={{car.mark}} class="form-control" type="text" value="" id="mark" name="mark" placeholder="Mark">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Model</label>
+            <input value={{car.model}} class="form-control" type="text" value="" id="model" name="model" placeholder="Model">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Car Type</label>
+            <input  value={{car.car_type}} class="form-control" type="text" value="" id="car_type" name="car_type" placeholder="Car Type">
+        </div>
+        <input class="btn btn-primary" type="submit" value="Edit Car">
     </form>
 {% else %}
-    <p>No car are available.</p>
+<div class="card border-primary mb-3">
+    <div class="card-header text-bg-primary">
+        UPS...
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">No cars are available.</h5>
+        <p class="card-text">There are no cars. You can add new car to app. Press Button below</p>
+    </div>
+</div>
 {% endif %}
 {% endblock %}
