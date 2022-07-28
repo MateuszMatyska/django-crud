@@ -2,12 +2,48 @@
 
 {% block content %}
 {% if drivers_list %}
-    <ul>
-    {% for driver in drivers_list %}
-        <li>{{driver.first_name}} {{driver.last_name}} {{ driver.car.mark }} {{driver.car.model}} {{driver.car.car_type}} <a href="/drivers/editdriver/{{ driver.id }}">edit driver</a> <a href="/drivers/deletedriver/{{ driver.id }}">delete driver</a></li>
-    {% endfor %}
-    </ul>
+    <table class="table">
+        <thead class="table-primary">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">First Name</th>
+              <th scope="col">Last Name</th>
+              <th scope="col">Car</th>
+              <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody class="table-group-divider table-secondary">
+            {% for driver in drivers_list %}
+                <tr>
+                    <td>{{ driver.id }}</td>
+                    <td>{{ driver.first_name }}</td>
+                    <td>{{ driver.last_name }}</td>
+                    <td>{{ driver.car.mark }} {{driver.car.model}} {{driver.car.car_type}}</td>
+                    <td>
+                        <a href="/drivers/editdriver/{{ driver.id }}" class="btn btn-warning" role="button" >Edit car</a> 
+                        <a href="/drivers/deletedriver/{{ driver.id }}" class="btn btn-danger" role="button" >Delete car</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 {% else %}
-    <p>No drivers are available.</p>
+<div class="card border-primary mb-3">
+    <div class="card-header text-bg-primary">
+        UPS...
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">No driver are available.</h5>
+        <p class="card-text">There are no drivers. You can add new driver to app. Press Button below</p>
+    </div>
+</div>
 {% endif %}
+<div class="container">
+    <div class="row">
+        <div class="col-10"></div>
+        <div class="col-2 ms-auto">
+            <a style="width: 100%;" class="btn btn-primary btn-lg" href="/drivers/adddriver" role="button">Add driver</a>
+        </div>
+    </div>
+</div>  
 {% endblock %}
